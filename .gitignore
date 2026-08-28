@@ -1,0 +1,17 @@
+## --- Visual Studio & .NET ---
+.vs/
+bin/
+obj/
+*.user
+*.suo
+appsettings.Development.json
+
+## --- Node & Angular ---
+node_modules/
+.angular/
+dist/
+.vscode/
+
+## --- Sistema operativo ---
+Thumbs.db
+.DS_Store
