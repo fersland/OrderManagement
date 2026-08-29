@@ -33,7 +33,10 @@ public class CustomersController : Controller
         return Ok(customer);
     }
 
-    [HttpPost]
+    [HttpPost("Create")]
+    [ProducesResponseType(typeof(object), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(object), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Create([FromBody] CreateDtoCustomer dto,
                                             [FromServices] IValidator<CreateDtoCustomer> validator)
     {

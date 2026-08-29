@@ -16,10 +16,10 @@ namespace Application.Validators
                 .NotEmpty().WithMessage("La cedula es requerida.")
                 .Length(10, 13).WithMessage("La cedula o RUC debe contener minimo 10 a 13 numeros");
 
-            RuleFor(x => x.Fname)
+            RuleFor(x => x.FirstName)
                 .NotEmpty().WithMessage("Este campo es requerido.")
                 .MaximumLength(40).WithMessage("Este campo solo permite 40 caracteres maximo.");
-            RuleFor(x => x.Lname)
+            RuleFor(x => x.LastName)
                 .MaximumLength(40).WithMessage("Este campo permite hasta 40 caracteres maximo.");
 
             RuleFor(x => x.Email)

@@ -10,7 +10,7 @@ using MediatR.Pipeline;
 namespace Application.Services;
 
 public record CustomerDto(Guid Id, string Ci, string FirstName, string LastName, string Phone, string Email);
-public record CreateDtoCustomer(Guid Id, string Ci, string Fname, string Lname, string Phone, string Email);
+public record CreateDtoCustomer(Guid Id, string Ci, string FirstName, string LastName, string Phone, string Email);
 
 
 public class CustomerSerivce
@@ -39,7 +39,7 @@ public class CustomerSerivce
 
     public async Task<Guid> CreateCustomerAsync(CreateDtoCustomer dto, CancellationToken cancellation = default)
     {
-        var customer = new Customer(dto.Id, dto.Ci, dto.Fname, dto.Lname, dto.Phone, dto.Email);
+        var customer = new Customer(dto.Id, dto.Ci, dto.FirstName, dto.LastName, dto.Phone, dto.Email);
 
         await _repository.AddAsync(customer);
         return customer.Id;

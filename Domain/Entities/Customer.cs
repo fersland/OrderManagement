@@ -21,7 +21,6 @@ namespace Domain.Entities
         {
             if (string.IsNullOrWhiteSpace(ci)) throw new ArgumentException("La cedula es requerida.");
             if (string.IsNullOrWhiteSpace(fname)) throw new ArgumentException("El nombre del cliente es requerido.");
-            if (string.IsNullOrWhiteSpace(lname)) throw new ArgumentException("El apellido del cliente es requrido.");
 
             Id = Guid.NewGuid();
             Ci = ci;
