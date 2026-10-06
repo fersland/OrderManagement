@@ -25,16 +25,16 @@ public class CustomerRepository : ICustomerRepository
             .ToListAsync(cancellation);
     }
 
-    public async Task AddAsync(Customer customer, CancellationToken cancellation = default)
-    {
-        await _context.Customers.AddAsync(customer, cancellation);
-        await _context.SaveChangesAsync(cancellation);
-    }
-
     public async Task<Customer?> GetByIdAsync(Guid id, CancellationToken cancellation = default)
     {
         return await _context.Customers
             .FirstOrDefaultAsync(cancellation);
+    }
+
+    public async Task AddAsync(Customer customer, CancellationToken cancellation = default)
+    {
+        await _context.Customers.AddAsync(customer, cancellation);
+        await _context.SaveChangesAsync(cancellation);
     }
 
     public Task UpdateAsync(Customer customer, CancellationToken cancellation = default)

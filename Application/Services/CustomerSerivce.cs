@@ -37,20 +37,20 @@ public class CustomerSerivce
         return customers.Select(MapToDto);
     }
 
+    public async Task<CustomerDto?> GetOrderByIdAsync(Guid id, CancellationToken cancellation = default)
+    {
+        var customer = await _repository.GetByIdAsync(id, cancellation);
+        if (customer == null) return null;
+
+        return MapToDto(customer);
+    }
+
     public async Task<Guid> CreateCustomerAsync(CreateDtoCustomer dto, CancellationToken cancellation = default)
     {
         var customer = new Customer(dto.Id, dto.Ci, dto.FirstName, dto.LastName, dto.Phone, dto.Email);
 
         await _repository.AddAsync(customer);
         return customer.Id;
-    }
-
-    public async Task<CustomerDto?> GetOrderByIdAsync(Guid id, CancellationToken cancellation = default)
-    {
-        var customer = await _repository.GetByIdAsync(id, cancellation);
-        if (customer == null) return null;
-
-        return MapToDto(customer);        
     }
 
 

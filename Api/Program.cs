@@ -16,9 +16,19 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // 2. Registro de Repositorios (Adaptadores Salientes)
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+builder.Services.AddScoped<IFilmsRepository, FilmsRepository>();
+builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IDeveloperRepository, DeveloperRepository>();
 
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<CustomerSerivce>();
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<DepartmentService>();
+builder.Services.AddScoped<FilmService>();
+builder.Services.AddScoped<PetService>();
+builder.Services.AddScoped<DeveloperService>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateCustomerValidator>();
 

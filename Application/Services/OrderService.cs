@@ -24,6 +24,20 @@ public class OrderService
         _repository = repository;
     }
 
+    public async Task<IEnumerable<OrderDto>> GetAllOrdersAsync(CancellationToken cancellationToken = default)
+    {
+        var orders = await _repository.GetAllAsync(cancellationToken);
+        return orders.Select(MapToDto);
+    }
+
+    public async Task<OrderDto?> GetOrderByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        var order = await _repository.GetByIdAsync(id, cancellationToken);
+        if (order is null) return null;
+
+        return MapToDto(order);
+    }
+
     public async Task<Guid> CreateOrderAsync(CreateOrderDto dto, CancellationToken cancellation = default)
     {
         var order = new Order(dto.CustomerName, dto.CustomerEmail);
@@ -35,20 +49,6 @@ public class OrderService
 
         await _repository.AddAsync(order, cancellation);
         return order.Id;
-    }
-
-    public async Task<OrderDto?> GetOrderByIdAsync(Guid id, CancellationToken cancellationToken = default)
-    {
-        var order = await _repository.GetByIdAsync(id, cancellationToken);
-        if (order is null) return null;
-
-        return MapToDto(order);
-    }
-
-    public async Task<IEnumerable<OrderDto>> GetAllOrdersAsync(CancellationToken cancellationToken = default)
-    {
-        var orders = await _repository.GetAllAsync(cancellationToken);
-        return orders.Select(MapToDto);
     }
 
     private static OrderDto MapToDto(Order order) => new(
