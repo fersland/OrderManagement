@@ -20,6 +20,8 @@ namespace Infraestructure.Persistence
         public DbSet<Films> Films => Set<Films>();
         public DbSet<Pet> Pets => Set<Pet>();
         public DbSet<Developer> Developers => Set<Developer>();
+        public DbSet<Player> Players => Set<Player>();
+        public DbSet<Promise> Promises => Set<Promise>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -86,6 +88,14 @@ namespace Infraestructure.Persistence
                 builder.HasKey(d => d.Id);
                 builder.Property(d => d.Name).HasMaxLength(60).IsRequired();
                 builder.Property(d => d.Age).IsRequired();
+            });
+
+            modelBuilder.Entity<Player>(builder =>
+            {
+                builder.HasKey(p => p.Id);
+                builder.Property(p => p.Name).HasMaxLength(40).IsRequired();
+                builder.Property(p => p.Team).HasMaxLength(60).IsRequired(false);
+                builder.Property(p => p.Age).IsRequired();
             });
         }
     }

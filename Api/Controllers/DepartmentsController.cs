@@ -34,7 +34,8 @@ public class DepartmentsController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Save([FromBody] CretaeDtoDepartment dto, [FromServices] IValidator<CretaeDtoDepartment> validator)
+    public async Task<IActionResult> Save([FromBody] CretaeDtoDepartment dto, 
+        [FromServices] IValidator<CretaeDtoDepartment> validator)
     {
         try
         {

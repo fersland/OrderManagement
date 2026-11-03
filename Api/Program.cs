@@ -21,6 +21,7 @@ builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IFilmsRepository, FilmsRepository>();
 builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IDeveloperRepository, DeveloperRepository>();
+builder.Services.AddScoped<IPromiseRepository, PromiseRepository>();
 
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<CustomerSerivce>();
@@ -29,6 +30,7 @@ builder.Services.AddScoped<DepartmentService>();
 builder.Services.AddScoped<FilmService>();
 builder.Services.AddScoped<PetService>();
 builder.Services.AddScoped<DeveloperService>();
+builder.Services.AddScoped<PromiseService>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateCustomerValidator>();
 
